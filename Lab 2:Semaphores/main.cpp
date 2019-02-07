@@ -9,7 +9,9 @@
    Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
 
 */
-/*! displays a message first*/
+/*! displays a message first. To allow the taskTwo function to run its code this function must call the Signal 
+  function
+*/
 void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay){
   sleep(delay);
   std::cout <<"I ";
@@ -18,7 +20,9 @@ void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay){
   std::cout << "first"<<std::endl;
   theSemaphore->Signal();
 }
-/*! displays a message second*/
+/*! displays a message second. By calling the Wait function the code will not run until the Signal function
+  is called from the taskOne function
+*/
 void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
   theSemaphore->Wait();
   std::cout <<"This ";
