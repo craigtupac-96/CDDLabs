@@ -1,5 +1,4 @@
 #include "Semaphore.h"
-#include "Semaphore.cpp"
 #include <iostream>
 #include <thread>
 #include <unistd.h>
