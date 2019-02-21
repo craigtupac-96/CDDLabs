@@ -4,9 +4,7 @@
 #include <vector>
 
 
-static const int num_threads = 100;
-int sharedVariable=0;
-
+static const int num_threads = 100;đđđ
 
 /*! \fn barrierTask
     \brief An example of using a reusable barrier
@@ -15,15 +13,13 @@ int sharedVariable=0;
 void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops){
 
   for(int i=0;i<numLoops;++i){
-    //Do first bit of task      some kind of call to barrier.cpp
-    std::cout << "A"<< i;
+    //Do first bit of task   
+    std::cout << "A"<< i << std::endl; // added endl for clearer output
     //Barrier
-    theBarrier.wait();
-    //Do second half of task    some other kind of call to barrier.cpp
-    std::cout<< "B" << i;
+    theBarrier->wait();
+    //Do second half of task
+    std::cout<< "B" << i << std::endl; // added endl for clearer output
   }
-  
-
 }
 
 
@@ -39,6 +35,6 @@ int main(void){
   for (auto& v :vt){
       v.join();
   }
-  std::cout << sharedVariable << std::endl;
+  std::cout << "Game over" << std::endl;
   return 0;
 }

@@ -43,9 +43,18 @@
  */
 
 /* Code: */
+#include "Semaphore.h"
 #pragma once
+//using namespace std;
+
 class Barrier{
   int numThreads;
+  int count = 0;
+
+  std::shared_ptr<Semaphore> mutexLock;
+  std::shared_ptr<Semaphore> firstSem;
+  std::shared_ptr<Semaphore> secondSem;
+   
  public:
   Barrier(int numThreads);
   virtual ~Barrier();
