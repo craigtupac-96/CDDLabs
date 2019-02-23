@@ -1,6 +1,3 @@
-The README file is a text file that explains what a project is.
-It should contain information on
-
 1. Project Licence
 Copyright 2019 Craig Lawlor
 
@@ -28,5 +25,4 @@ Within the HTML folder run index.html
 The Makefile contains the projects compilation configuration. This dictates what will happen
 when the "make" command is run
 
-
-7. Any other relevent information
+The program starts from main.cpp and uses the other "cpp" and "h" files in execution. 
