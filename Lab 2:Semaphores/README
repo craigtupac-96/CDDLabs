@@ -18,10 +18,15 @@ To get the files clone the repository from the following url:
 https://github.com/craigtupac-96/CDDLabs/tree/master/Lab%202:Semaphores
 
 4. List of any required Libraries, platform issues, etc.
-
-5. TO DO section listing items that need to be completed (errors, missing features etc.)
+To compile this program run the "make" command in the terminal
+To run the program execute "./semaphore" in the terminal
 
 6. List of files and what they contain
+The Doxygen folder contains both HTML and Latex versions of the documentation. 
+Within the HTML folder run index.html
+
+The Makefile contains the projects compilation configuration. This dictates what will happen
+when the "make" command is run
 
 
 7. Any other relevent information
