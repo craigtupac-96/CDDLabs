@@ -2,7 +2,7 @@
     \brief A documented file.
 
     Craig Lawlor
-    Feb 29019
+    Feb 2019
 */
 #include "Semaphore.h"
 #include <iostream>
@@ -64,7 +64,6 @@ int main(void){
   /**< Unless the semaphore is set to 1 the program will stall */
   std::shared_ptr<Semaphore> aSemaphore( new Semaphore(1));
   /**< Launch the threads  */
-  //int i=0;
   for(std::thread& t: vt){
     t=std::thread(updateTask,aSemaphore,1000);
   }

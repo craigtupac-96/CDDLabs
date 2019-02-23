@@ -2,7 +2,7 @@
     \brief A documented file.
 
     Craig Lawlor
-    Feb 29019
+    Feb 2019
 */
 #include "Semaphore.h"
 #include <iostream>
@@ -51,7 +51,7 @@ void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
     \var taskOneDelay an int to hold the delay time
     
      Creates two threads and sends each to one of the above functions. 
-     Then jois the threads and exits.
+     Then joins the threads and exits.
 */
 int main(void){
   std::thread threadOne, threadTwo;

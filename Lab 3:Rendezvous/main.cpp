@@ -2,7 +2,7 @@
     \brief A documented file.
 
     Craig Lawlor
-    Feb 29019
+    Feb 2019
 */
 #include "Semaphore.h"
 #include <iostream>
