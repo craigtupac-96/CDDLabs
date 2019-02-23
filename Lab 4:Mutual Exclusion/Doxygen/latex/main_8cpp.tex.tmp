@@ -1,0 +1,66 @@
+\hypertarget{main_8cpp}{}\section{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.\+cpp@{main.\+cpp}}
+
+
+A documented file.  
+
+
+{\ttfamily \#include \char`\"{}Semaphore.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a0c3809ad7085464d893904dab98c1e7f}{update\+Task} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$ first\+Sem, int num\+Updates)
+\begin{DoxyCompactList}\small\item\em displays a message that is split in to 2 sections to show how a rendezvous works \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em The eponymous main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_a2d5b01367ae1267dfac47c7875aac5e4}\label{main_8cpp_a2d5b01367ae1267dfac47c7875aac5e4}} 
+int \hyperlink{main_8cpp_a2d5b01367ae1267dfac47c7875aac5e4}{shared\+Variable} =0
+\begin{DoxyCompactList}\small\item\em The int that will be incremented. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A documented file. 
+
+Craig Lawlor Feb 29019 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int \hyperlink{classmain}{main} (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The eponymous main function. 
+
+$<$ Unless the semaphore is set to 1 the program will stall
+
+$<$ Launch the threads
+
+$<$ Join the threads with the main thread \mbox{\Hypertarget{main_8cpp_a0c3809ad7085464d893904dab98c1e7f}\label{main_8cpp_a0c3809ad7085464d893904dab98c1e7f}} 
+\index{main.\+cpp@{main.\+cpp}!update\+Task@{update\+Task}}
+\index{update\+Task@{update\+Task}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{update\+Task()}{updateTask()}}
+{\footnotesize\ttfamily update\+Task (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$}]{first\+Sem,  }\item[{int}]{num\+Updates }\end{DoxyParamCaption})}
+
+
+
+displays a message that is split in to 2 sections to show how a rendezvous works 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Sem} & a pointer to the first shared semaphore \\
+\hline
+{\em num\+Updates} & to hold the limit for the loop\\
+\hline
+\end{DoxyParams}
+The first\+Sem will lock the loop with a Wait() call which will not allow another thread to use the loop until it Signals when finished. The shared variable will increment 1000 times for each of the 100 threads 
