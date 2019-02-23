@@ -1,62 +1,45 @@
-// Barrier.cpp --- 
-// 
-// Filename: Barrier.cpp
-// Description: 
-// Author: Joseph
-// Maintainer: 
-// Created: Tue Jan  8 12:14:02 2019 (+0000)
-// Version: 
-// Package-Requires: ()
-// Last-Updated: Tue Jan  8 12:15:21 2019 (+0000)
-//           By: Joseph
-//     Update #: 2
-// URL: 
-// Doc URL: 
-// Keywords: 
-// Compatibility: 
-// 
-// 
+/*! \file Barrier.cpp
+    \brief A documented file.
 
-// Commentary: 
-// 
-// 
-// 
-// 
-
-// Change Log:
-// 
-// 
-// 
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-// 
-// 
-
-// Code:
+    Craig Lawlor
+    Feb 2019
+*/
 #include "Semaphore.h"
 #include "Barrier.h"
 #include <iostream>
-//using namespace std;
+/*! \class Barrier
+    \brief An Implementation of a Barrier
+
+   Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
+*/
+/*! \fn Barrier::~Barrier()
+    \brief the destructor
+*/
 Barrier::~Barrier() {}
 
+/*! \fn Barrier::Barrier(int numThreads) :numThreads(numThreads)
+    \brief the constructor
+    \params numThreads the number of threads
+    \params mutexLock a shared semaphore
+    \param firstSem a shared semaphore
+    \param secondSem a shared semaphore
+
+    There is no body in the constructor
+*/
 Barrier::Barrier(int numThreads) :numThreads(numThreads),
 				   mutexLock(std::shared_ptr<Semaphore>(new Semaphore(1))),
 				   firstSem(std::shared_ptr<Semaphore>(new Semaphore(0))),
 				   secondSem(std::shared_ptr<Semaphore>(new Semaphore(1))){
-  // no body to love
 }
 
+/*! \fn void Barrier::wait()
+    \brief The barrier wait function uses a mutex lock to stop threads from accessing certain
+    parts of the code until until the lock opens. An if statement for when the count is at min 
+    and max is protected by the mutex lock. These if statements have semaphores inside them. 
+
+    If the count is at max (numThreads), the secondSem waits and firstSem signals. 
+    If the count is at min (0), the firstSem waits and the secondSem signals. 
+*/
 void Barrier::wait(){
   // mutex set to 1 to allow the first thread through
   // Wait will then block the next thread until signal
@@ -64,14 +47,12 @@ void Barrier::wait(){
   // increase thread count
   count++;
   
-   if(count == numThreads) {
-  secondSem->Wait();
-   firstSem->Signal();
+  if(count == numThreads) {
+    secondSem->Wait();
+    firstSem->Signal();
   }
-  
   // business done, open the lock for the next thread
-
- mutexLock->Signal(); // mutexLock = 1
+   mutexLock->Signal(); // mutexLock = 1
  
   firstSem->Wait();
   firstSem->Signal();

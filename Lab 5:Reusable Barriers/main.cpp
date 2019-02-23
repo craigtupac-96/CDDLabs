@@ -1,15 +1,34 @@
+/*! \file main.cpp
+    \brief A documented file.
+
+    Craig Lawlor
+    Feb 2019
+*/
 #include "Barrier.h"
 #include <iostream>
 #include <thread>
 #include <vector>
+/*! \mainpage Barrier Lab
+  The code in this lab uses a Barrier with a mutex lock to stop threads accessing certain parts of the 
+  code until the current thread has released the mutex lock. 
+*/
+/*! \class main
+    \brief An Implementation of Threads Using Semaphores 
 
-
-static const int num_threads = 100;đđđ
-
+   Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
+*/
+/*! \var static const int num_threads=// 100
+    \brief The number of threads we intend to create
+*/
+static const int num_threads = 100;
 /*! \fn barrierTask
     \brief An example of using a reusable barrier
+    \params theBarrier a shared pointer to the barrier
+    \params numLoops to hold the number of times the loop will run
+
+    A thread will print an A along with the number of the loop held by i. The wait function of the Barrier 
+    class is then called to stop threads printing b's. 
 */
-/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
 void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops){
 
   for(int i=0;i<numLoops;++i){
@@ -22,12 +41,18 @@ void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops){
   }
 }
 
-
+/*! \fn int main()
+    \brief The eponymous main function
+    \var vt a vector of threads
+    \var aBarrier a shared pointer to the barrier
+    
+     Creates a vector of threads and a barrier. For each thread in the vector the barrierTask function 
+     is called. The threads are then joined before exiting. 
+*/
 int main(void){
   std::vector<std::thread> vt(num_threads);
   std::shared_ptr<Barrier> aBarrier( new Barrier(num_threads));
   /**< Launch the threads  */
-  int i=0;
   for(std::thread& t: vt){
     t=std::thread(barrierTask,aBarrier,10);
   }
