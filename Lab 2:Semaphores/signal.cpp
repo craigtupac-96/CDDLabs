@@ -2,7 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <unistd.h>
-/*! \class Signal
+/*! \class main
     \brief An Implementation of Threads Using Semaphores 
 
    Uses C++11 features such as mutex and condition variables to implement Semaphores in thread functions 
