@@ -9,8 +9,7 @@
 #include <thread>
 #include <chrono>
 /*! \mainpage Rendezvous Lab
-  The code in this lab demonstrates a rendezvous by using a semaphores to make the first thread wait for the 
-  second thread at a certain point before exiting
+  The code in this lab uses a semaphores to make the first thread to arrive wait for the second before leaving
 */
 /*! \class main
     \brief An Implementation of a Rendezvous using Semaphores
@@ -19,12 +18,10 @@
 
 */
 /*! \fn taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  secondSem, int delay)
-    \brief displays a message that is split in to 2 sections to show how a rendezvous works
-    \param firstSem the first shared seaphore
+    \brief displays a message that is split in to 2 sections to show how a rendezvous works 
+    \param firstSem the first shared semahore
     \param secondSem the second shared semaphore
     \param delay holds the time to delay
-
-    Displays a message that the first task arrived and then sends a signal to allow the second task to exit
 */
 void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  secondSem, int delay){
   std::this_thread::sleep_for(std::chrono::seconds(delay));
@@ -32,14 +29,12 @@ void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  sec
   firstSem->Signal();
   std::cout << "Task One has left!"<<std::endl;
 }
+/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
 /*! \fn taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay)
-    \brief displays a message that is split in to 2 sections to show how a rendezvous works
-    \param firstSem the first shared seaphore
+    \brief displays a message that is split in to 2 sections to show how a rendezvous worksdisplays a message that is split in to 2 sections to show how a rendezvous work 
+    \param firstSem the first shared semahore
     \param secondSem the second shared semaphore
     \param delay holds the time to delay
-
-    Displays a message that the second task has arrived and sends a wait to stop the thread fro exiting until 
-    it receives a signal from the other thread
 */
 void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay){
   std::this_thread::sleep_for(std::chrono::seconds(delay));
@@ -52,13 +47,12 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
     \brief The eponymous main function
     \var threadOne the first thread
     \var threadTwo the second thread
-    \var sem1 the first shared semaphore 
-    \var sem2 the second shared semaphore 
-    \var taskOneDelay the first delay 
-    \var taskTwoDelay the second delay
+    \var sem1
+    \var sem2
+    \var taskOneDelay an int to hold the first delay time
+    \var taskTwoDelay an int to hold the second delay time
     
-     Creates two threads and sends each to one of the above functions with the shared semaphores.
-     Then joins the threads and exits
+     Creates two 
 */
 int main(void){
   std::thread threadOne, threadTwo;
