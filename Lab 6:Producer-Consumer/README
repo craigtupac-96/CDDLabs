@@ -12,11 +12,11 @@ Joseph Kehoe, Craig Lawlor
 
 3. How to install project
 To get the files clone the repository from the following url:
-
+https://github.com/craigtupac-96/CDDLabs/tree/master/Lab%206:Producer-Consumer
 
 4. List of any required Libraries, platform issues, etc.
 To compile this program run the "make" command in the terminal
-To run the program execute "./producer" in the terminal
+To run the program execute "lab6" in the terminal
 
 6. List of files and what they contain
 The Doxygen folder contains both HTML and Latex versions of the documentation. 
